@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Compras · Flight with Musics</title>
+<style>
+:root{--bg:#0a0a0a;--card:#16140f;--cream:#f3efe6;--amber:#e8a93c;--mut:#b9b2a2;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--cream);font-family:Montserrat,"Segoe UI",system-ui,sans-serif;line-height:1.6;padding-bottom:110px}
+a{color:inherit;text-decoration:none}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;align-items:center;gap:16px;padding:12px 5%;background:rgba(10,10,10,.92);border-bottom:1px solid #262219}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.04em}
+.logo i{width:38px;height:38px;border:2px solid var(--amber);border-radius:50%;display:grid;place-items:center;font-style:normal;color:var(--amber)}
+.logo small{display:block;color:var(--amber);font-size:.6rem;letter-spacing:.3em;font-weight:600}
+nav{margin-left:auto;display:flex;gap:20px;font-size:.9rem}
+nav a:hover{color:var(--amber)}
+.btn{display:inline-block;padding:9px 18px;border-radius:8px;border:1.5px solid var(--amber);font-weight:700;font-size:.9rem;cursor:pointer;background:none;color:var(--amber);font-family:inherit}
+.btn.fill{background:var(--amber);color:#0a0a0a}
+section{padding:40px 5% 8px}
+h1{font-size:clamp(1.8rem,5vw,2.6rem);font-weight:800}
+h2{font-size:1.4rem;margin-bottom:16px;font-weight:800}
+h1 span,h2 span{color:var(--amber)}
+.sub{color:var(--mut);margin:6px 0 20px}
+.filters{display:flex;flex-wrap:wrap;gap:12px}
+select{background:var(--card);color:var(--cream);border:1px solid #3a3326;border-radius:999px;padding:9px 16px;font-family:inherit;font-size:.9rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px}
+.item{background:var(--card);border:1px solid #262219;border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.img{aspect-ratio:16/10;background:linear-gradient(135deg,#2a2112,#14110a);display:grid;place-items:center;font-size:2rem;color:var(--amber)}
+.body{padding:14px 16px;display:flex;flex-direction:column;gap:4px;flex:1}
+.body small{color:var(--mut)}
+.price{color:var(--amber);font-weight:800;font-size:1.1rem}
+.row{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:10px}
+.tag{font-size:.7rem;color:var(--amber);letter-spacing:.1em;text-transform:uppercase}
+.empty{color:var(--mut);padding:20px 0}
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:6;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 5%;padding-bottom:calc(14px + env(safe-area-inset-bottom,0px));background:#14110a;border-top:1px solid var(--amber)}
+.bar b{font-size:1.3rem;color:var(--amber)}
+.bar small{display:block;color:var(--mut)}
+.ov{position:fixed;inset:0;z-index:10;background:rgba(0,0,0,.75);display:none;place-items:center;padding:16px}
+.ov.on{display:grid}
+.modal{background:var(--card);border:1px solid #3a3326;border-radius:16px;max-width:420px;width:100%;overflow:hidden}
+.modal .img{aspect-ratio:16/9}
+.modal .body{padding:20px;gap:8px}
+.modal .acts{display:flex;gap:10px;margin-top:12px}
+.banner{margin:20px 5% 0;border-radius:16px;padding:40px 28px;border:1px solid #3a3326;background:radial-gradient(ellipse at 85% 30%,#5a3f12,transparent 60%),linear-gradient(120deg,#2a2112,#0f0d08);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.banner h2{font-size:clamp(1.4rem,4vw,2.2rem);margin-bottom:6px}
+.banner p{color:var(--mut);max-width:30em}
+.chead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.chead h2{margin:0}
+.arrows{display:flex;gap:8px}
+.arrows button{width:40px;height:40px;border-radius:50%;padding:0;font-size:1.1rem}
+.car{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-bottom:8px;scrollbar-width:none}
+.car::-webkit-scrollbar{display:none}
+.car .item{flex:0 0 min(280px,78%);scroll-snap-align:start}
+footer{text-align:center;padding:28px 5%;color:var(--mut);font-size:.85rem}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="#top"><i>♪</i><span>FLIGHT<small>WITH MUSICS</small></span></a>
+  <nav><a href="#destaques">Destaques</a><a href="#passeios">Passeios</a></nav>
+</header>
+
+<div class="banner">
+  <div><h2>Seu voo, <span>sua trilha sonora</span></h2><p>Passeios de avião sobre os pontos turísticos mais famosos, com a música que você escolher.</p></div>
+  <a class="btn fill" href="#passeios">Ver passeios</a>
+</div>
+
+<section id="top">
+  <h1><span>Compras</span></h1>
+  <p class="sub">Escolha o passeio, veja os detalhes e finalize sua compra.</p>
+  <div class="filters">
+    <select id="f1"><option value="">Local: todos</option></select>
+    <select id="f2"><option value="">Piloto: todos</option></select>
+    <select id="f3"><option value="">Avião: todos</option><option>Jato</option><option>Combustão</option></select>
+    <select id="f4"><option value="">Ordenar</option><option value="asc">Menor preço</option><option value="desc">Maior preço</option></select>
+  </div>
+</section>
+
+<section id="destaques"><div class="chead"><h2><span>Destaques</span></h2><div class="arrows"><button class="btn" id="prev" aria-label="Anterior">‹</button><button class="btn" id="next" aria-label="Próximo">›</button></div></div><div class="car" id="dest"></div></section>
+<section id="passeios"><h2>Todos os <span>passeios</span></h2><div class="grid" id="list"></div></section>
+
+<footer>Flight with Musics · valores de exemplo</footer>
+
+<div class="bar">
+  <div><small>Total (<span id="qtd">0</span> passeios)</small><b id="total">R$ 0,00</b></div>
+  <button class="btn fill" id="fin">Finalizar compra</button>
+</div>
+
+<div class="ov" id="ov"><div class="modal" id="modal"></div></div>
+
+<script>
+var DATA=[
+ {id:1,t:"Cristo Redentor",l:"Rio de Janeiro",p:"Piloto 1",a:"Jato",v:890,d:true,x:"Sobrevoo completo com playlist à sua escolha."},
+ {id:2,t:"Pão de Açúcar",l:"Rio de Janeiro",p:"Piloto 2",a:"Combustão",v:450,d:true,x:"Voo panorâmico e tranquilo pela baía."},
+ {id:3,t:"Cataratas do Iguaçu",l:"Foz do Iguaçu",p:"Piloto 3",a:"Jato",v:1200,d:true,x:"Vista aérea das quedas com trilha sonora."},
+ {id:4,t:"Lençóis Maranhenses",l:"Maranhão",p:"Piloto 4",a:"Combustão",v:980,d:true,x:"Dunas e lagoas vistas do alto."},
+ {id:5,t:"Praia de Copacabana",l:"Rio de Janeiro",p:"Piloto 1",a:"Combustão",v:380,d:false,x:"Passeio curto pela orla."},
+ {id:6,t:"Centro de São Paulo",l:"São Paulo",p:"Piloto 2",a:"Jato",v:760,d:false,x:"A cidade iluminada ao entardecer."}
+];
+var cart=[],$=function(i){return document.getElementById(i)};
+function brl(n){return "R$ "+n.toLocaleString("pt-BR",{minimumFractionDigits:2})}
+function opts(id,key){var s=$(id),seen={};DATA.forEach(function(d){if(!seen[d[key]]){seen[d[key]]=1;var o=document.createElement("option");o.textContent=d[key];s.appendChild(o)}})}
+opts("f1","l");opts("f2","p");
+function card(d){
+ return '<div class="item"><div class="img">✈</div><div class="body"><span class="tag">'+d.a+'</span><b>'+d.t+'</b><small>'+d.l+' · '+d.p+'</small><div class="row"><span class="price">'+brl(d.v)+'</span><button class="btn" onclick="openM('+d.id+')">Explorar</button></div></div></div>';
+}
+function render(){
+ var f1=$("f1").value,f2=$("f2").value,f3=$("f3").value,f4=$("f4").value;
+ var r=DATA.filter(function(d){return (!f1||d.l===f1)&&(!f2||d.p===f2)&&(!f3||d.a===f3)});
+ if(f4)r.sort(function(a,b){return f4==="asc"?a.v-b.v:b.v-a.v});
+ $("list").innerHTML=r.length?r.map(card).join(""):'<p class="empty">Nenhum passeio encontrado com esses filtros.</p>';
+}
+$("dest").innerHTML=DATA.filter(function(d){return d.d}).map(card).join("");
+$("prev").onclick=function(){$("dest").scrollBy({left:-$("dest").clientWidth*0.8})};
+$("next").onclick=function(){$("dest").scrollBy({left:$("dest").clientWidth*0.8})};
+["f1","f2","f3","f4"].forEach(function(i){$(i).onchange=render});
+render();
+function openM(id){
+ var d=DATA.filter(function(x){return x.id===id})[0];
+ $("modal").innerHTML='<div class="img">✈</div><div class="body"><span class="tag">'+d.a+'</span><h2 style="margin:0">'+d.t+'</h2><small>'+d.l+' · '+d.p+'</small><p>'+d.x+'</p><span class="price">'+brl(d.v)+'</span><div class="acts"><button class="btn fill" onclick="add('+d.id+')">Adicionar</button><button class="btn" onclick="closeM()">Fechar</button></div></div>';
+ $("ov").className="ov on";
+}
+function closeM(){$("ov").className="ov"}
+$("ov").onclick=function(e){if(e.target===$("ov"))closeM()};
+function add(id){
+ cart.push(DATA.filter(function(x){return x.id===id})[0]);
+ var t=0;cart.forEach(function(c){t+=c.v});
+ $("qtd").textContent=cart.length;$("total").textContent=brl(t);closeM();
+}
+$("fin").onclick=function(){
+ var m=$("modal");
+ if(!cart.length){m.innerHTML='<div class="body"><h2 style="margin:0">Carrinho vazio</h2><p>Adicione um passeio para finalizar.</p><div class="acts"><button class="btn" onclick="closeM()">Fechar</button></div></div>'}
+ else{m.innerHTML='<div class="body"><h2 style="margin:0">Compra <span>finalizada</span>!</h2><p>'+cart.length+' passeio(s) · '+$("total").textContent+'</p><p style="color:var(--mut)">Protótipo: nenhum pagamento é realizado.</p><div class="acts"><button class="btn fill" onclick="closeM()">Ok</button></div></div>';cart=[];$("qtd").textContent=0;$("total").textContent=brl(0)}
+ $("ov").className="ov on";
+};
+</script>
+</body>
+</html>
