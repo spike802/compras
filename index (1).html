@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Flight with Musics</title>
+<style>
+:root{--bg:#0a0a0a;--card:#16140f;--cream:#f3efe6;--amber:#e8a93c;--mut:#b9b2a2;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--bg);color:var(--cream);font-family:Montserrat,"Segoe UI",system-ui,sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;align-items:center;gap:16px;padding:12px 5%;background:rgba(10,10,10,.92);border-bottom:1px solid #262219}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.04em}
+.logo i{width:38px;height:38px;border:2px solid var(--amber);border-radius:50%;display:grid;place-items:center;font-style:normal;color:var(--amber)}
+.logo small{display:block;color:var(--amber);font-size:.6rem;letter-spacing:.3em;font-weight:600}
+nav{margin-left:auto;display:flex;align-items:center;gap:20px;font-size:.9rem;flex-wrap:wrap}
+nav a:hover{color:var(--amber)}
+.btn{display:inline-block;padding:9px 18px;border-radius:8px;border:1.5px solid var(--amber);font-weight:700;font-size:.9rem;cursor:pointer;background:none;color:var(--amber)}
+.btn.fill{background:var(--amber);color:#0a0a0a}
+.hero{min-height:78vh;display:grid;place-items:center;text-align:center;padding:64px 5%;background:radial-gradient(ellipse at 70% 20%,#3a2a0e 0,transparent 55%),linear-gradient(180deg,#14110a,var(--bg))}
+.hero h1{font-size:clamp(2rem,6vw,3.8rem);line-height:1.1;font-weight:800;max-width:14em;margin:0 auto 18px}
+.hero h1 span,h2 span{color:var(--amber)}
+.hero p{max-width:34em;margin:0 auto 28px;color:var(--mut);font-size:1.05rem}
+.hero .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+section{padding:72px 5%}
+h2{font-size:clamp(1.5rem,4vw,2.2rem);margin-bottom:8px;font-weight:800}
+.sub{color:var(--mut);margin-bottom:32px;max-width:36em}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.card{background:var(--card);border:1px solid #262219;border-radius:14px;padding:22px;display:flex;align-items:center;gap:16px}
+.av{flex:none;width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--amber),#8a5a10);display:grid;place-items:center;font-weight:800;color:#0a0a0a;font-size:1.3rem}
+.card b{display:block}.card small{color:var(--mut)}
+.planes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.plane{border-radius:14px;padding:28px;min-height:200px;display:flex;flex-direction:column;justify-content:flex-end;border:1px solid #262219}
+.plane.a{background:linear-gradient(160deg,#2a2112,var(--card))}
+.plane.b{background:linear-gradient(160deg,#1c1c1c,var(--card))}
+.plane h3{color:var(--amber);margin-bottom:6px}
+.plane p{color:var(--mut);margin-bottom:14px;font-size:.95rem}
+.cta{text-align:center;background:var(--card);border-top:1px solid #262219}
+.cta .btn{margin-top:18px}
+.gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px}
+.gal h3{color:var(--amber);margin-bottom:14px}
+.gal .col{display:grid;gap:16px}
+.ph{aspect-ratio:16/10;border-radius:14px;border:1px solid #262219;background:linear-gradient(135deg,#2a2112,#14110a);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--mut);font-size:.9rem}
+.ph i{font-style:normal;font-size:2rem;color:var(--amber)}
+footer{text-align:center;padding:28px 5%;color:var(--mut);font-size:.85rem;border-top:1px solid #262219}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="#top"><i>♪</i><span>FLIGHT<small>WITH MUSICS</small></span></a>
+  <nav>
+    <a href="#contato">Contato</a>
+    <a href="#avioes">Aviões</a>
+    <a href="compras.html">Comprar</a>
+    <a class="btn" href="#top">Register</a>
+    <a class="btn fill" href="#top">Login</a>
+  </nav>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div>
+      <h1>Voe sobre os lugares mais famosos <span>ao som da sua música</span></h1>
+      <p>Passeios de avião fáceis de agendar: escolha o local turístico, o piloto e o avião. Sem complicação e sem preço absurdo.</p>
+      <div class="btns">
+        <a class="btn fill" href="compras.html">Comprar passeio</a>
+        <a class="btn" href="#avioes">Ver aviões</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="pilotos">
+    <h2>Conheça nossos <span>Pilotos</span></h2>
+    <p class="sub">Profissionais experientes que levam você com segurança e tornam o passeio inesquecível.</p>
+    <div class="grid">
+      <div class="card"><div class="av">P1</div><div><b>Piloto 1</b><small>Texto sobre o piloto</small></div></div>
+      <div class="card"><div class="av">P2</div><div><b>Piloto 2</b><small>Texto sobre o piloto</small></div></div>
+      <div class="card"><div class="av">P3</div><div><b>Piloto 3</b><small>Texto sobre o piloto</small></div></div>
+      <div class="card"><div class="av">P4</div><div><b>Piloto 4</b><small>Texto sobre o piloto</small></div></div>
+    </div>
+  </section>
+
+  <section id="avioes">
+    <h2>Sobre os <span>aviões</span></h2>
+    <p class="sub">Dois tipos de aeronave para o seu estilo de voo.</p>
+    <div class="planes">
+      <div class="plane a"><h3>Aviões à Combustão</h3><p>Voo tranquilo e panorâmico, ideal para apreciar a paisagem com calma.</p><a class="btn" href="#comprar">Ver aviões</a></div>
+      <div class="plane b"><h3>Aviões à Jato</h3><p>Mais potência e velocidade para uma experiência de voo intensa.</p><a class="btn" href="#comprar">Ver aviões</a></div>
+    </div>
+  </section>
+
+  <section id="comprar" class="cta">
+    <h2>Cote os <span>locais famosos</span></h2>
+    <p class="sub" style="margin-inline:auto">Escolha o ponto turístico, o piloto e o avião, e agende seu passeio em poucos cliques.</p>
+    <a class="btn fill" href="compras.html">Cotar agora</a>
+  </section>
+  <section id="galeria">
+    <h2>Sobre nossos <span>Aviões</span></h2>
+    <p class="sub">Conheça a nossa frota por dentro e por fora.</p>
+    <div class="gal">
+      <div><h3>Aviões à Jato</h3><div class="col">
+        <div class="ph"><i>✈</i>Foto do avião à jato 1</div>
+        <div class="ph"><i>✈</i>Foto do avião à jato 2</div>
+        <div class="ph"><i>✈</i>Foto do avião à jato 3</div>
+      </div></div>
+      <div><h3>Aviões à Combustão</h3><div class="col">
+        <div class="ph"><i>✈</i>Foto do avião à combustão 1</div>
+        <div class="ph"><i>✈</i>Foto do avião à combustão 2</div>
+        <div class="ph"><i>✈</i>Foto do avião à combustão 3</div>
+      </div></div>
+    </div>
+  </section>
+</main>
+
+<footer id="contato">Flight with Musics · contato@flightwithmusics.com</footer>
+</body>
+</html>
