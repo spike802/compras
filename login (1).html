@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Login e cadastro · Flight with Musics</title>
+<style>
+:root{--bg:#0a0a0a;--card:#16140f;--cream:#f3efe6;--amber:#e8a93c;--mut:#b9b2a2;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--cream);font-family:Montserrat,"Segoe UI",system-ui,sans-serif;line-height:1.6;min-height:100vh}
+a{color:inherit;text-decoration:none}
+header{display:flex;align-items:center;gap:16px;padding:12px 5%;border-bottom:1px solid #262219}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.04em}
+.logo i{width:38px;height:38px;border:2px solid var(--amber);border-radius:50%;display:grid;place-items:center;font-style:normal;color:var(--amber)}
+.logo small{display:block;color:var(--amber);font-size:.6rem;letter-spacing:.3em;font-weight:600}
+nav{margin-left:auto;display:flex;gap:20px;font-size:.9rem}
+nav a:hover{color:var(--amber)}
+main{display:grid;place-items:center;padding:40px 5%}
+.box{width:100%;max-width:400px;background:var(--card);border:1px solid #262219;border-radius:16px;padding:26px}
+.tabs{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #3a3326;margin-bottom:20px}
+.tabs button{background:none;border:none;border-bottom:3px solid transparent;color:var(--mut);font-family:inherit;font-weight:700;font-size:1rem;padding:10px 0;cursor:pointer}
+.tabs button.on{color:var(--amber);border-color:var(--amber)}
+h1{font-size:1.5rem;font-weight:800;margin-bottom:4px}
+h1 span{color:var(--amber)}
+.sub{color:var(--mut);margin-bottom:12px;font-size:.95rem}
+label{display:block;font-size:.85rem;color:var(--mut);margin:12px 0 4px}
+input{width:100%;background:#0f0d08;color:var(--cream);border:1px solid #3a3326;border-radius:8px;padding:11px 12px;font-family:inherit;font-size:1rem}
+input:focus{outline:2px solid var(--amber)}
+.btn{display:block;width:100%;margin-top:18px;padding:12px;border-radius:8px;border:1.5px solid var(--amber);font-weight:700;font-size:1rem;cursor:pointer;background:var(--amber);color:#0a0a0a;font-family:inherit;text-align:center}
+.btn.out{background:none;color:var(--amber)}
+.msg{color:#ff8a7a;font-size:.9rem;margin-top:12px;min-height:1.4em}
+.note{color:var(--mut);font-size:.75rem;margin-top:16px;text-align:center}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="index.html"><i>♪</i><span>FLIGHT<small>WITH MUSICS</small></span></a>
+  <nav><a href="index.html">Início</a><a href="compras.html">Comprar</a><a href="carrinho.html">Carrinho</a></nav>
+</header>
+<main><div class="box" id="box"></div></main>
+
+<script>
+var $=function(i){return document.getElementById(i)};
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function ld(k,d){try{var v=JSON.parse(localStorage.getItem(k));return v==null?d:v}catch(e){return d}}
+function sv(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+function hash(s){
+ if(window.crypto&&crypto.subtle&&window.TextEncoder){return crypto.subtle.digest("SHA-256",new TextEncoder().encode("fwm:"+s)).then(function(b){return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,"0")}).join("")})}
+ return Promise.resolve(btoa(unescape(encodeURIComponent("fwm:"+s))));
+}
+var mode=new URLSearchParams(location.search).get("mode")==="cadastro"?"c":"l";
+function err(t){$("msg").textContent=t}
+function enter(nome,email){sv("fwm_user",{nome:nome,email:email});location.href="index.html"}
+function render(){
+ var u=ld("fwm_user",null),b=$("box");
+ if(u){
+  b.innerHTML='<h1>Olá, <span>'+esc(u.nome)+'</span>!</h1><p class="sub">Você está conectado com '+esc(u.email)+'.</p><a class="btn" href="compras.html">Ir para as compras</a><button class="btn out" id="sair">Sair</button>';
+  $("sair").onclick=function(){try{localStorage.removeItem("fwm_user")}catch(e){}render()};
+  return;
+ }
+ var c=mode==="c";
+ b.innerHTML='<div class="tabs"><button id="tl" class="'+(c?"":"on")+'">Entrar</button><button id="tc" class="'+(c?"on":"")+'">Cadastrar</button></div>'
+  +'<h1>'+(c?'Criar <span>conta</span>':'Bem-vindo de <span>volta</span>')+'</h1><p class="sub">'+(c?'Cadastre-se para comprar seus passeios.':'Entre para comprar seus passeios.')+'</p>'
+  +(c?'<label for="nome">Nome</label><input id="nome" autocomplete="name">':'')
+  +'<label for="email">E-mail</label><input id="email" type="email" autocomplete="email">'
+  +'<label for="senha">Senha</label><input id="senha" type="password" autocomplete="'+(c?'new-password':'current-password')+'">'
+  +(c?'<label for="senha2">Confirmar senha</label><input id="senha2" type="password" autocomplete="new-password">':'')
+  +'<div class="msg" id="msg"></div><button class="btn" id="ok">'+(c?'Cadastrar':'Entrar')+'</button>'
+  +'<p class="note">Protótipo: os dados ficam apenas neste navegador.</p>';
+ $("tl").onclick=function(){mode="l";render()};
+ $("tc").onclick=function(){mode="c";render()};
+ $("ok").onclick=function(){
+  var em=$("email").value.trim().toLowerCase(),se=$("senha").value,no=c?$("nome").value.trim():"";
+  if(!em||!se||(c&&!no)){return err("Preencha todos os campos.")}
+  if(em.indexOf("@")<1){return err("Digite um e-mail válido.")}
+  var users=ld("fwm_users",[]),ex=users.filter(function(x){return x.email===em})[0];
+  if(c){
+   if(se.length<4)return err("A senha precisa ter pelo menos 4 caracteres.");
+   if(se!==$("senha2").value)return err("As senhas não são iguais.");
+   if(ex)return err("Este e-mail já está cadastrado. Use a aba Entrar.");
+   hash(se).then(function(h){users.push({nome:no,email:em,h:h});sv("fwm_users",users);enter(no,em)});
+  }else{
+   if(!ex)return err("Conta não encontrada. Use a aba Cadastrar.");
+   hash(se).then(function(h){if(h!==ex.h)return err("E-mail ou senha incorretos.");enter(ex.nome,em)});
+  }
+ };
+}
+render();
+</script>
+</body>
+</html>
